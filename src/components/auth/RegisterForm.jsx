@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FormInput from "../form/FormInput";
 import FormButton from "../form/FormButton";
 import FormError from "../form/FormError";
+import api from "../../services/api";
 
 export default function RegisterForm() {
   const [name, setName] = useState("");
@@ -10,7 +11,7 @@ export default function RegisterForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     setError("");
 
@@ -19,9 +20,11 @@ export default function RegisterForm() {
       return;
     }
     if (email.trim() === "") {
-      newErrors.email = "O campo email é obrigatório.";
+      setError("O campo email é obrigatório.");
+      return;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = "Digite um email válido.";
+      setError("Digite um email válido.");
+      return;
     }
     if (!password) {
       setError("O campo senha é obrigatório.");
@@ -36,7 +39,35 @@ export default function RegisterForm() {
       return;
     }
 
-    console.log("Registrar com:", { name, email, password });
+    try {
+      const response = await api.post("/cadastro", {
+        name: name.trim(),
+        email: email.trim(),
+        password: password,
+      });
+
+      // Verifique se o backend retorna token e user corretamente
+      if (response.data?.token && response.data?.user) {
+        localStorage.setItem("token", response.data.token);
+
+        alert("Cadastro realizado com sucesso!");
+        console.log("Cadastro bem-sucedido:", response.data.user);
+      } else {
+        setError("Resposta inesperada do servidor.");
+      }
+    } catch (err) {
+      if (err.response?.data?.erro) {
+        setError(err.response.data.erro);
+      } else if (err.response?.data?.error) {
+        const msg = Array.isArray(err.response.data.error)
+          ? err.response.data.error.join(" ")
+          : err.response.data.error;
+
+        setError(msg);
+      } else {
+        setError("Erro ao tentar fazer cadastro.");
+      }
+    }
   }
 
   return (

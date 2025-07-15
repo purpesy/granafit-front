@@ -3,7 +3,7 @@ export default function AuthFooter({ mode, onToggleMode, onForgotPassword }) {
     <div className="my-10 text-center text-gray-500">
       {mode === "login" ? (
         <>
-          <p className="mb-4">
+          <p className="mb-3">
             <span className="mr-1 text-gray-800">Não sou cliente ainda.</span>
             <button
               type="button"
