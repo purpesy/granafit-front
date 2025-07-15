@@ -23,7 +23,7 @@ export default function AuthFormContainer({
         </div>
 
         {/* Formulário */}
-        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-xl w-full max-w-sm max-h-[93vh] transition-all">
+        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-xl w-full max-w-sm max-h-[93vh] overflow-y-auto transition-all">
           <div className="text-center mb-3">
             <h1 className="text-3xl font-bold">GranaFit</h1>
             <span className="text-xs text-white bg-green-600 px-2 py-1 rounded-full ml-2">
