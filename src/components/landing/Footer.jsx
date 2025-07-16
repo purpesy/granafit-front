@@ -1,14 +1,3 @@
-// --- VERSÃO PROFISSIONAL ---
-// Mudanças:
-// 1. Layout reestruturado para um design multi-colunas, muito mais profissional.
-// 2. Adicionada uma coluna para "Produto", "Empresa" e "Legal".
-// 3. Adicionado um espaço para ícones de redes sociais.
-// 4. Cores e tipografia ajustadas para um visual limpo e moderno.
-// 5. O logo agora está mais alinhado com o tema.
-
-import React from 'react';
-
-// Ícones SVG para redes sociais
 const SocialIcon = ({ href, children }) => (
   <a href={href} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#2EE59D] transition-colors duration-300">
     {children}

@@ -1,14 +1,3 @@
-// --- VERSÃO PROFISSIONAL ---
-// Mudanças:
-// 1. Substituição de emojis por ícones SVG profissionais e consistentes.
-// 2. O ícone agora fica dentro de um círculo colorido para maior destaque.
-// 3. Fundo da seção alterado para 'bg-slate-50' para criar contraste com as seções brancas.
-// 4. Efeito de hover aprimorado no card, com uma leve elevação ('transform').
-// 5. Ajustes na tipografia e cores para alinhamento com a nova paleta.
-
-import React from 'react';
-
-// Ícones SVG para cada feature
 const icons = {
   Dashboard: (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">

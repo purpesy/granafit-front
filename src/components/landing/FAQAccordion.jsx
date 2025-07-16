@@ -1,12 +1,4 @@
-// --- VERSÃO PROFISSIONAL ---
-// Mudanças:
-// 1. Fundo da seção alterado para 'bg-slate-50' para contraste.
-// 2. O caractere '⌄' foi substituído por um ícone de Chevron SVG para um visual mais limpo.
-// 3. A animação de rotação do ícone está mais suave com `duration-300`.
-// 4. O estado "aberto" agora tem um fundo sutilmente destacado para melhor feedback visual.
-// 5. Cores de texto e borda suavizadas.
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const faqs = [
   { question: 'É seguro conectar minhas contas?', answer: 'Sim! Usamos criptografia de nível bancário e seguimos os mais altos padrões de segurança do mercado. Seus dados estão protegidos.' },
@@ -24,9 +16,6 @@ const ChevronDownIcon = ({ className }) => (
 
 export default function FAQAccordion() {
   const [open, setOpen] = useState(null);
-  
-  // Animação customizada para o fade-in (opcional, requer configuração no tailwind.config.js)
-  // Se não quiser configurar, pode remover a classe 'animate-fade-in-down'
   const contentClass = `px-6 pt-2 pb-6 text-slate-600 text-lg animate-fade-in-down`;
   
   return (

@@ -1,12 +1,3 @@
-// --- VERSÃO PROFISSIONAL ---
-// Mudanças:
-// 1. Fundo alterado para um gradiente escuro ('bg-slate-900'), criando um grande contraste e destacando-a como uma seção final de conversão.
-// 2. Cores do texto ajustadas para branco e cinza claro para legibilidade no fundo escuro.
-// 3. Botão de ação com gradiente e uma sombra mais pronunciada e colorida, tornando-o o foco principal.
-// 4. Título e espaçamentos ajustados para um visual mais dramático e convidativo.
-
-import React from 'react';
-
 export default function CallToAction() {
   return (
     <section className="w-full bg-slate-900">

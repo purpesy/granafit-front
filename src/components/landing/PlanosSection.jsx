@@ -1,76 +1,58 @@
-import React from 'react';
-
-const plans = [
-  {
-    name: 'Free',
-    price: 'R$0',
-    desc: 'O básico para começar a organizar sua vida financeira.',
-    features: [
-      'Dashboard inteligente',
-      'Metas básicas',
-      'Alertas essenciais',
-    ],
-    highlight: false,
-    cta: 'Começar grátis',
-    href: '/login?register',
-  },
-  {
-    name: 'Basic',
-    price: 'R$9,90',
-    desc: 'Para quem quer ir além e turbinar seus resultados.',
-    features: [
-      'Tudo do Free',
-      'Metas ilimitadas',
-      'Relatórios motivadores',
-      'Exportação de dados',
-    ],
-    highlight: false,
-    cta: 'Quero evoluir',
-    href: '#',
-  },
-  {
-    name: 'Premium',
-    price: 'R$19,90',
-    desc: 'O shape financeiro definitivo. Tudo do GranaFit, sem limites.',
-    features: [
-      'Tudo do Basic',
-      'Suporte prioritário',
-      'Novidades exclusivas',
-      'Acesso antecipado a recursos',
-    ],
-    highlight: true,
-    cta: 'Quero ser Premium',
-    href: '#',
-  },
-];
-
-function PlanCard({ name, price, desc, features, highlight, cta, href }) {
-  return (
-    <div className={`flex flex-col rounded-2xl border-2 ${highlight ? 'border-[#2EE59D] shadow-lg scale-105 z-10 bg-white' : 'border-gray-200 shadow bg-white'} p-10 gap-6 transition-all`}>
-      <h3 className={`text-2xl font-black mb-1 ${highlight ? 'text-[#2EE59D]' : 'text-[#1A2236]'}`}>{name}</h3>
-      <div className="text-4xl font-extrabold mb-2 text-[#1A2236]">{price} <span className="text-base font-medium text-[#1A2236]/50">/mês</span></div>
-      <p className="text-[#1A2236]/70 mb-4 text-lg font-medium">{desc}</p>
-      <ul className="flex-1 flex flex-col gap-2 mb-4">
-        {features.map((f, i) => (
-          <li key={i} className="flex items-center gap-2 text-[#2EE59D] font-semibold">{f}</li>
-        ))}
-      </ul>
-      <a href={href} className={`mt-auto px-8 py-4 rounded-xl font-bold text-lg text-white bg-[#2EE59D] hover:bg-[#24c98a] transition shadow ${highlight ? '' : 'opacity-90 hover:opacity-100'}`}>{cta}</a>
-    </div>
-  );
-}
+import { SectionTitle } from './SectionTitle';
 
 export default function PlanosSection() {
+  const plans = [
+    {
+      name: 'Free',
+      price: 'R$0',
+      desc: 'Ideal para começar com controle básico.',
+      features: ['Dashboard essencial', 'Metas básicas', 'Alertas mensais'],
+      highlight: false,
+    },
+    {
+      name: 'Basic',
+      price: 'R$9,90',
+      desc: 'Para quem quer evoluir com relatórios e metas ilimitadas.',
+      features: ['Tudo do Free', 'Metas ilimitadas', 'Exportação de dados'],
+      highlight: true,
+    },
+    {
+      name: 'Premium',
+      price: 'R$19,90',
+      desc: 'A experiência completa para o shape financeiro ideal.',
+      features: ['Tudo do Basic', 'Suporte VIP', 'Novidades exclusivas'],
+      highlight: false,
+    },
+  ];
+
   return (
-    <section className="w-full py-20 bg-white" id="pricing">
-      <div className="max-w-5xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-black text-center text-[#1A2236] mb-16">Escolha seu plano</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {plans.map((p, i) => (
-            <PlanCard key={i} {...p} />
-          ))}
-        </div>
+    <section className="py-24 bg-gray-50" id="planos">
+      <SectionTitle title="Planos que cabem no seu bolso" subtitle="Escolha o que mais combina com sua jornada" />
+      <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+        {plans.map((plan, i) => (
+          <div
+            key={i}
+            className={`rounded-2xl p-8 shadow-md hover:shadow-xl transition border-2 ${
+              plan.highlight ? 'border-[#2EE59D]' : 'border-gray-200'
+            } bg-white flex flex-col justify-between`}
+          >
+            <div>
+              <h3 className="text-2xl font-bold mb-2 text-gray-800">{plan.name}</h3>
+              <p className="text-4xl font-extrabold text-gray-900 mb-2">{plan.price}</p>
+              <p className="text-gray-600 mb-4">{plan.desc}</p>
+              <ul className="mb-6 text-sm text-gray-700 list-disc list-inside">
+                {plan.features.map((f, idx) => <li key={idx}>{f}</li>)}
+              </ul>
+            </div>
+            <a
+              href="/login?register"
+              className={`mt-auto text-center block w-full py-3 rounded-xl font-bold text-white ${plan.highlight ? 'bg-[#2EE59D]' : 'bg-gray-700'} hover:opacity-90 transition`}
+            >
+              Escolher plano
+            </a>
+          </div>
+        ))}
       </div>
     </section>
   );
-} 
+}
