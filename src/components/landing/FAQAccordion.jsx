@@ -1,44 +1,52 @@
+// --- VERSÃO PROFISSIONAL ---
+// Mudanças:
+// 1. Fundo da seção alterado para 'bg-slate-50' para contraste.
+// 2. O caractere '⌄' foi substituído por um ícone de Chevron SVG para um visual mais limpo.
+// 3. A animação de rotação do ícone está mais suave com `duration-300`.
+// 4. O estado "aberto" agora tem um fundo sutilmente destacado para melhor feedback visual.
+// 5. Cores de texto e borda suavizadas.
+
 import React, { useState } from 'react';
 
 const faqs = [
-  {
-    question: 'É seguro?',
-    answer: 'Sim! Seus dados são criptografados e protegidos com tecnologia de ponta.'
-  },
-  {
-    question: 'Tem versão gratuita?',
-    answer: 'Sim, você pode usar o GranaFit gratuitamente e evoluir para planos pagos quando quiser.'
-  },
-  {
-    question: 'Posso exportar meus dados?',
-    answer: 'Pode sim! Exporte tudo em CSV ou PDF a qualquer momento.'
-  },
-  {
-    question: 'O que muda nos planos pagos?',
-    answer: 'Mais relatórios, metas ilimitadas, suporte prioritário e novidades exclusivas.'
-  },
+  { question: 'É seguro conectar minhas contas?', answer: 'Sim! Usamos criptografia de nível bancário e seguimos os mais altos padrões de segurança do mercado. Seus dados estão protegidos.' },
+  { question: 'Existe uma versão 100% gratuita?', answer: 'Sim, você pode usar o GranaFit gratuitamente para sempre. Os planos pagos oferecem funcionalidades avançadas, como relatórios personalizados e metas ilimitadas.' },
+  { question: 'Posso cancelar a qualquer momento?', answer: 'Com certeza. Você pode cancelar sua assinatura a qualquer momento, sem burocracia e sem multas.' },
+  { question: 'Como o GranaFit ganha dinheiro?', answer: 'Ganhamos dinheiro através das assinaturas dos nossos planos premium. Nunca venderemos seus dados.' },
 ];
+
+const ChevronDownIcon = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+  </svg>
+);
+
 
 export default function FAQAccordion() {
   const [open, setOpen] = useState(null);
+  
+  // Animação customizada para o fade-in (opcional, requer configuração no tailwind.config.js)
+  // Se não quiser configurar, pode remover a classe 'animate-fade-in-down'
+  const contentClass = `px-6 pt-2 pb-6 text-slate-600 text-lg animate-fade-in-down`;
+  
   return (
-    <section className="w-full py-20 bg-white" id="faq">
+    <section className="w-full py-20 bg-slate-50" id="faq">
       <div className="max-w-3xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-black text-center text-[#1A2236] mb-16">Perguntas frequentes</h2>
-        <div className="flex flex-col gap-6">
+        <h2 className="text-4xl md:text-5xl font-black text-center text-slate-900 mb-16">Dúvidas? A gente responde.</h2>
+        <div className="flex flex-col gap-4">
           {faqs.map((faq, i) => (
-            <div key={i} className="border border-gray-200 rounded-2xl bg-white shadow-sm">
+            <div key={i} className={`bg-white rounded-xl shadow-sm border border-slate-200/80 overflow-hidden transition-all duration-300 ${open === i ? 'shadow-lg' : ''}`}>
               <button
-                className="w-full text-left px-6 py-5 text-xl font-bold text-[#1A2236] flex justify-between items-center focus:outline-none"
+                className="w-full text-left p-6 text-xl font-bold text-slate-800 flex justify-between items-center focus:outline-none"
                 onClick={() => setOpen(open === i ? null : i)}
                 aria-expanded={open === i}
               >
                 {faq.question}
-                <span className={`ml-4 text-2xl transition-transform ${open === i ? 'rotate-180' : ''}`}>⌄</span>
+                <ChevronDownIcon className={`w-5 h-5 text-slate-500 transition-transform duration-300 ${open === i ? 'rotate-180' : ''}`} />
               </button>
               {open === i && (
-                <div className="px-6 pb-6 text-[#1A2236]/80 text-lg font-medium animate-fade-in">
-                  {faq.answer}
+                <div className={contentClass}>
+                  <p>{faq.answer}</p>
                 </div>
               )}
             </div>
@@ -47,4 +55,4 @@ export default function FAQAccordion() {
       </div>
     </section>
   );
-} 
+}

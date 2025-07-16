@@ -62,7 +62,7 @@ function PlanCard({ name, price, desc, features, highlight, cta, href }) {
 
 export default function PlanosSection() {
   return (
-    <section className="w-full py-20 bg-white" id="planos">
+    <section className="w-full py-20 bg-white" id="pricing">
       <div className="max-w-5xl mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-black text-center text-[#1A2236] mb-16">Escolha seu plano</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
