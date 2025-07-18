@@ -2,7 +2,7 @@ import HeroFoto from "../../assets/img/hero-banner.png";
 
 export default function HeroSection() {
   return (
-    <section className="bg-gradient-to-br from-green-100 to-white py-24">
+    <section className="bg-gray-50 py-24">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
         
         {/* Texto */}
