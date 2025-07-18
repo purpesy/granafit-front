@@ -16,7 +16,7 @@ export default function Navbar() {
         </ul>
         {/* Botões */}
         <div className="hidden md:flex gap-3">
-          <a href="/login" className="px-6 py-2 rounded-lg font-bold text-green-700 border-2 border-green-600 bg-white hover:bg-green-50 transition shadow-sm">Entrar</a>
+          <a href="/login" className="px-6 py-2 rounded-lg font-bold text-green-700 border-2 border-green-600 bg-white hover:bg-green-50 transition shadow-sm">Entrar ou Cadastrar</a>
         </div>
         {/* Mobile menu placeholder */}
         <div className="md:hidden" />

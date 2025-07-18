@@ -26,7 +26,7 @@ export default function PlanosSection() {
   ];
 
   return (
-    <section className="py-24 bg-gray-50" id="planos">
+    <section className="py-24 bg-gray-50" id="pricing">
       <SectionTitle title="Planos que cabem no seu bolso" subtitle="Escolha o que mais combina com sua jornada" />
       <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
         {plans.map((plan, i) => (

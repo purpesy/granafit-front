@@ -20,7 +20,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white" id='howitworks'>
       <SectionTitle title="Como funciona" subtitle="Com 3 passos você transforma sua saúde financeira" />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
         {steps.map((s, i) => (
